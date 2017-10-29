@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Project </title>
+		<link rel="stylesheet" type="text/css" href = "mystyle.css">
+	</head>
+	<body>
+		<h2>Analysis of American Housing Affordability and Burden
+
+			<p align=center> <font size = "+1">Junyi Dong</font>  </p>
+
+		<img class="displayed" src="house.jpeg" style="width:200px;height:150px;" />
+
+	</h2>
+		<!-- About Me section start -->
+		<div class="section">
+			<h1><span>Introduction</span></h1>
+			<p>
+				This project provides an analysis of the American housing affordability and burden from 1995 to 2013. Three different measures of affordability are compared over this 10-year period and significant changes are observed. 
+			</p>
+			<p>
+				The three measures of affordability include (1) the household housing cost relative to area median income (CostRelAMI), 
+				(2) the household housing cost relative to the fair market rent (CostRelFMR),
+				and (3) the household housing cost relative to the poverty threshold (CostRelPov). 
+				Here the household housing cost is assumed to be 30% of
+				the household income. The higher the ratios are, the higher the affordability measures are. For instance, if the CostRelAMI is low, then the unit if affordable. 
+
+				Another measure is the housing cost burden. It is the ratio of monthly housing cost to the monthly household income. A large ratio indicates high burden on the household. 
+			</p>
+			<p>
+				In this project, the datasets for each year are linked to one another for the longitudinal analysis. From this analysis, one can conclude that the affordability measures have certain trends and thus these measures can be used to predict housing cost. 
+			</p>
+		</div>
+		<!-- Introduction section end -->
+		<div class="section">
+			<h1><span>Dataset and Variables</span></h1>
+			<p>
+				The dataset is provided by the <i> US Deartpment of Housing and Urban Development Housing Affordability Data System (HADS)</i> and can be obtained from this 
+				<a href="https://www.huduser.gov/portal/datasets/hads/hads.html/">website</a>. In this project, the datasets for year 1995 to 2013 are used for analysis. These ten year period observations provide a consistent estimate of
+				affordability of housing units and cost burden of households. 
+
+			   <ol>
+			   	<li> <b> Fair Market Rent (FMR) </b>:
+			   	The FMR is calculated by the AHS for all metromolitan areas and non-metropolitan countires.  
+
+			   	</li>
+
+			   	<li> <b> Area Median Income (AMI) </b>: The AMI is provided by the AHS. AMI is based on
+			   		<ol>
+			   			<li>
+			   				Median Income (LMed): <i>not adjusted for the number of persons in the household</i>,
+			   			</li>
+			   			<li>
+			   				Low Income (L80): <i> adjusted for the number of persons in the household</i>,
+			   			</li>
+			   			<li>
+			   				Very Low Income (L50): <i> adjusted for the number of persons in the household</i>,
+			   			</li>
+			   			<li>
+			   				Extremely Low Income (L30): <i> adjusted for the number of persons in the household</i>,
+			   			</li>
+			   		</ol>
+
+			   	</li>
+
+			   	<li> <b>Poverty Level Income (POV) </b>: The POV is provided by 
+			   		the <i>Census Bureau</i>. 
+
+			   	</li>
+			
+			   	<li> <b> Measuring Affordability Relative to Fair Market Rent </b>
+			   		<p>
+
+
+			   		The affordability relative to fair market rent (CostRelFMR) is the ratio of 30 percent of monthly household income to the fair market rent. 
+
+			   		<table align="center">
+			   			<tr>
+			   				<td bgcolor="lightblue"> Category</td>
+			   				<td bgcolor="lightblue"> Ratio</td>
+			   			</tr>
+			   			<tr>
+			   				<td> 1</td>
+			   				<td> less than 50.1% FMR</td>
+			   			</tr>
+			   			<tr>
+			   				<td> 2</td>
+			   				<td> 50.1-100% FMR</td>
+			   			</tr>
+			   			<tr>
+			   				<td> 3</td>
+			   				<td> more than 100% FMR</td>
+			   			</tr>
+
+			   		</table>
+		        	</p>
+
+
+			   	</li>
+			   	<li> <b> Measuring Affordability Relative to Area Median Income </b>
+
+			   	   <p>
+
+
+			   		The affordability relative to area median income (CostRelAMI) is the percentage of yearly housing cost in the 30 percent of area median income. 
+
+			   		<table align="center">
+			   			<tr>
+			   				<td bgcolor="lightblue"> Category</td>
+			   				<td bgcolor="lightblue"> Income</td>
+			   				<td bgcolor="lightblue"> Housing Cost</td>
+			   			</tr>
+			   			<tr>
+			   				<td> 1</td>
+			   				<td> no more than 0.6 * L50 or L30 </td>
+			   				<td> no more than 30% AMI </td>
+
+			   			</tr>
+			   			<tr>
+			   				<td> 2</td>
+			   				<td> no more than L50</td>
+			   				<td> 30.1-50% AMI </td>
+
+			   			</tr>
+			   			<tr>
+			   				<td> 3</td>
+			   				<td> no more than 1.2 * L50</td>
+			   				<td> 50.1-60% AMI </td>
+
+			   			</tr>
+			   			<tr>
+			   				<td> 4</td>
+			   				<td> no more than L80</td>
+			   				<td> 60.1-80% AMI</td>
+			   			</tr>
+			   			<tr>
+			   				<td> 5</td>
+			   				<td> no more than LMED</td>
+			   				<td> 80.1-100%</td>
+			   			</tr>
+			   			<tr>
+			   				<td> 6</td>
+			   				<td> no more than 1.2 * LMED</td>
+			   				<td> 100.1-120%</td>
+			   			</tr>
+			   			<tr>
+			   				<td> 7</td>
+			   				<td> more than 1.2 * LMED</td>
+			   				<td> more than 120% AMI</td>
+			   			</tr>
+
+			   		</table>
+			   		</p>
+
+
+			   	</li>
+			   	 	<li> <b> Measuring Affordability Relative to Poverty Income </b>
+
+			   	 	<p>	
+
+			   		The affordability relative to poverty income (CostRelPov) is the 30% of the monthly housing cost as a multiple of poverty threshold. 
+
+			   		<table align="center">
+			   			<tr>
+			   				<td bgcolor="lightblue"> Category</td>
+			   				<td bgcolor="lightblue"> Ratio</td>
+			   			</tr>
+			   			<tr>
+			   				<td> 1</td>
+			   				<td> no more than Poverty</td>
+			   			</tr>
+			   			<tr>
+			   				<td> 2</td>
+			   				<td> 100-150% Poverty</td>
+			   			</tr>
+			   			<tr>
+			   				<td> 3</td>
+			   				<td> 150-200% Poverty</td>
+			   			</tr>
+			   			<tr>
+			   				<td> 4</td>
+			   				<td> more than 200% Poverty</td>
+			   			</tr>
+
+			   		</table>
+			   	</p>
+
+			   	</li>
+			   	<li>
+			   		<b> Housing Cost Burden </b>: The ratio of monthly housing cost to the household's monthly income. 
+			   	</li>
+			   </ol>>
+			</p>
+		</div>
+		<!-- Variables section end -->
+		<div class="section">
+			<h1><span>Results</span></h1>
+			<ol>
+				<li>
+					<b>Study of Affordability Relative to Fair Market Rent</b>
+					<ul>
+						<li>
+							<small>
+								The following plot displays average affordability relative to fair market rent. The average increased from 1995 to 2009 and decreased afterwards. Also, the plot suggests that the average might continue to decrease. 
+								<p>
+			   					<img class="displayed" src="p8.jpeg" style="width:500px;height:400px;" />
+								}
+								</p>
+							</small>
+							
+						</li>
+						<li>
+							<small>
+								The following plot displays the proportion of each categories from year 1995 to year 2013. The proportion of low affordability relative to FMR is stable until 2011 and slightly increase in 2013. The proportion of middle affordability relative to FMR decreased from 1995 to 2007 and then increased from 2007 to 2013. The proportion of high affordability relative to FMR shows an opposite trend. 
+								<p>
+			   					<img class="displayed" src="p1.jpeg" style="width:500px;height:400px;" />
+								}
+								</p>
+							</small>
+							
+						</li>
+						<li>
+							<small>
+								The following plot displays the trend of the average percentage of the monthly household income in terms of the FMR from year 1995 to 2013. The low affordability category had a stable average of 29.31% and the middle affordability category had an average of 79.04%. The average percentage for the high affordability category increased from 163.16% to 215.35% and then decreased to 181.16%.  
+							<p>
+			   					<img class="displayed" src="p2.jpeg" style="width:500px;height:400px;" />
+								}
+								</p>	
+							</small>
+						</li>
+						<li>
+							<small>
+								<b>Longitudinal Analysis:</b> the plot shows that for every category, the average ratio of the monthly household income to the FMR was increasing. Also, the p-value is more than 0.05, which indicates that there is a significant change over the 10 years. 
+							<p>
+			   					<img class="displayed" src="p11.jpeg" style="width:500px;height:400px;" />
+								}
+								<img class="displayed" src="p12.jpeg" style="width:500px;height:400px;" />
+								}
+								</p>	
+							</small>
+						</li>
+
+					</ul>
+					
+				</li>
+				<li>
+					<b> Study of Affordability Relative to Area Median Income </b>
+<ul>
+						<li>
+							<small>
+								The following plot displays average affordability relative to area median income. The average increased from 1995 to 2009 and decreased afterwards. Also, the plot suggests that the average might increase after year 2013. 
+								<p>
+			   					<img class="displayed" src="p9.jpeg" style="width:500px;height:400px;" />
+								}
+								</p>
+							</small>
+							
+						</li>
+						<li>
+							<small>
+								The following plot displays the proportion of each categories of the affordability relative to AMI from year 1995 to year 2013. Similar trends can be observed for category 1-5. The proportion of category 6 was stable over ten years. However, the category 7 showed an increasing trend until 2007 and then a decreasing trend.  
+								<p>
+			   					<img class="displayed" src="p3.jpeg" style="width:700px;height:400px;" />
+								}
+								</p>
+							</small>
+							
+						</li>
+						<li>
+							<small>
+								The following plot displays the trend of the average percentage of the yearly housing cost in terms of the AMI from year 1995 to 2013. For all ten years, similar patterns can be observed and the average percentage did not change significantly for all categories. 
+							<p>
+			   					<img class="displayed" src="p4.jpeg" style="width:700px;height:400px;" />
+								}
+								</p>	
+							</small>
+						</li>
+						<li>
+							<small>
+								<b>Longitudinal Analysis:</b> the plot shows that for every category, the average ratio of the housing cost to the AMI was increasing. Also, the p-value is larger than 0.05, which indicates that there is a significant change over the 10 years. 
+							<p>
+			   					<img class="displayed" src="p13.jpeg" 
+			   					style="width:500px;height:400px;" />
+								}
+								<img class="displayed" src="p14.jpeg" style="width:500px;height:400px;" />
+								}
+								</p>	
+							</small>
+						</li>
+
+					</ul>
+					
+
+				</li>
+
+				<li>
+					<b> Study of Affordability Relative to Poverty Income </b>
+<ul>
+						<li>
+							<small>
+								The following plot displays average affordability relative to area median income. The average increased from 1995 to 2009 and decreased afterwards. Also, the plot suggests that the average might decrease after year 2013. 
+								<p>
+			   					<img class="displayed" src="p10.jpeg" style="width:500px;height:400px;" />
+								}
+								</p>
+							</small>
+							
+						</li>
+						<li>
+							<small>
+								The following plot displays the proportion of each categories of the affordability relative to PI from year 1995 to year 2013. Similar trends can be observed for all categories. The proportion of category 4 was stable over ten years. 
+								<p>
+			   					<img class="displayed" src="p5.jpeg" style="width:600px;height:400px;" />
+								}
+								</p>
+							</small>
+							
+						</li>
+						<li>
+							<small>
+								The following plot displays the trend of the average percentage of the yearly housing cost in terms of the PI from year 1995 to 2013. For all ten years, similar patterns can be observed and the average percentage for category 1-3 did not change significantly. However, the average for category 4 increased from 1995 to 2007 and decreased afterwards. 
+							<p>
+			   					<img class="displayed" src="p6.jpeg" style="width:600px;height:400px;" />
+								}
+								</p>	
+							</small>
+						</li>
+						<li>
+							<small>
+								<b>Longitudinal Analysis:</b> the plot shows that for every category, the average ratio of the housing cost to the poverty income was increasing. Also, the p-value is larger than 0.05, which indicates that there is a significant change over the 10 years. 
+							<p>
+			   					<img class="displayed" src="p15.jpeg" 
+			   					style="width:500px;height:400px;" />
+								}
+								<img class="displayed" src="p16.jpeg" style="width:500px;height:400px;" />
+								}
+								</p>	
+							</small>
+						</li>
+
+					</ul>
+					
+
+				</li>
+				<li>
+					<b> Study of Housing Cost Burden </b>
+					<p>
+						<small>
+								The following plot displays the trend of the housing cost burden over the ten year period as well as the regression curve. The plot presents a periodic pattern and suggests that the cost burden may continue to increase after year 2013. 
+							<p>
+			   					<img class="displayed" src="p7.jpeg" style="width:500px;height:350px;" />
+								}
+								</p>	
+							</small>
+					</p>
+					
+				</li>
+
+			</ol>
+			
+		</div>
+		<!-- Results section end -->
+		<div class="section">
+			<h1><span>Conclusions</span></h1>
+			<p>
+				
+				   From the analysis, we can conclude that the three measures of affordability show similar trend. The average affordability increased from 1995 to 2006 and decreased afterwards. The proportions of each categories did not change significantly over the ten-year period. The relative average affordability also has similar pattern over ten years. The longitudinal analysis suggests that the affordability was increasing from 1995 to 2013 for all three measures and such changes are significant. 
+			</p>
+			<p>
+				The measure of housing cost burden also shows certain trends. It increased from 1995 to 2005 and decreased from 2005 to 2010 and started to increase afterwards. This pattern is similar as the trends of affordability. 
+			</p>
+			<p>
+				It is interesting to study on the following questions further:
+			<ul>
+				<li>
+					<i> What factors cause the pattern of the average affordability? What factors cause the pattern of the cost burden? What do these two measures have similar pattern? </i>
+				</li>
+				<li> <i>
+					What is the projected affordability and burden after 2013?  </i>
+				</li>
+				<li> <i>
+					What causes the increasing pattern of the average affordability for each category? Is there any significant differences among the patterns for each category? </i>
+
+				</li>
+			</ul>
+			</p>
+
+
+				
+		</div>
+		<!-- Conclusion section end -->
+
+
+	</body>
+</html>
